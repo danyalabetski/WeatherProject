@@ -8,9 +8,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController(rootViewController: WeatherView())
+        let navigationController = UINavigationController()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        let _ = WeatherRouter(navigationController: navigationController)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

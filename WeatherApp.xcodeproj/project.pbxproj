@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,13 @@
 		950A9F70293F370600EBB097 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A9F6F293F370600EBB097 /* WeatherPresenter.swift */; };
 		950A9F72293F370F00EBB097 /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A9F71293F370F00EBB097 /* WeatherRouter.swift */; };
 		950A9F74293F371400EBB097 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A9F73293F371400EBB097 /* Model.swift */; };
+		950A9F78293F485D00EBB097 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A9F77293F485D00EBB097 /* UIView+Extension.swift */; };
+		950A9F7C293F4AF800EBB097 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 950A9F7B293F4AF800EBB097 /* SnapKit */; };
+		950A9F7E293F5D9200EBB097 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A9F7D293F5D9200EBB097 /* CollectionViewCell.swift */; };
+		95E8BE98293FAFF800272C04 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95E8BE97293FAFF800272C04 /* Poppins-SemiBold.ttf */; };
+		95E8BE9A293FB04E00272C04 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95E8BE99293FB04E00272C04 /* Poppins-Medium.ttf */; };
+		95E8BE9D293FB0EB00272C04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8BE9C293FB0EB00272C04 /* NetworkManager.swift */; };
+		95E8BEA02940DB0000272C04 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8BE9F2940DB0000272C04 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +35,12 @@
 		950A9F6F293F370600EBB097 /* WeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 		950A9F71293F370F00EBB097 /* WeatherRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
 		950A9F73293F371400EBB097 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		950A9F77293F485D00EBB097 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		950A9F7D293F5D9200EBB097 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		95E8BE97293FAFF800272C04 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		95E8BE99293FB04E00272C04 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		95E8BE9C293FB0EB00272C04 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		95E8BE9F2940DB0000272C04 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950A9F7C293F4AF800EBB097 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +74,9 @@
 		950A9F51293F31BA00EBB097 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				950A9F75293F484700EBB097 /* Helper */,
 				950A9F66293F32D800EBB097 /* BasicDelegateFiles */,
+				95E8BE9B293FB0C000272C04 /* NetworkLayer */,
 				950A9F69293F360B00EBB097 /* MainWeatherScreen */,
 				950A9F67293F334500EBB097 /* Utility */,
 			);
@@ -109,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				950A9F56293F31BA00EBB097 /* WeatherView.swift */,
+				950A9F7D293F5D9200EBB097 /* CollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +154,49 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		950A9F75293F484700EBB097 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				95E8BE9E2940DAC400272C04 /* LocationManager */,
+				950A9F7F293F785500EBB097 /* Fonts */,
+				950A9F76293F485000EBB097 /* Extensions */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		950A9F76293F485000EBB097 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				950A9F77293F485D00EBB097 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		950A9F7F293F785500EBB097 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				95E8BE97293FAFF800272C04 /* Poppins-SemiBold.ttf */,
+				95E8BE99293FB04E00272C04 /* Poppins-Medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		95E8BE9B293FB0C000272C04 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				95E8BE9C293FB0EB00272C04 /* NetworkManager.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		95E8BE9E2940DAC400272C04 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				95E8BE9F2940DB0000272C04 /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +213,9 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				950A9F7B293F4AF800EBB097 /* SnapKit */,
+			);
 			productName = WeatherApp;
 			productReference = 950A9F4F293F31BA00EBB097 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -173,7 +236,7 @@
 				};
 			};
 			buildConfigurationList = 950A9F4A293F31BA00EBB097 /* Build configuration list for PBXProject "WeatherApp" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -181,6 +244,9 @@
 				Base,
 			);
 			mainGroup = 950A9F46293F31BA00EBB097;
+			packageReferences = (
+				950A9F7A293F4AF800EBB097 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 950A9F50293F31BA00EBB097 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -196,6 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				950A9F5F293F31BC00EBB097 /* LaunchScreen.storyboard in Resources */,
+				95E8BE9A293FB04E00272C04 /* Poppins-Medium.ttf in Resources */,
+				95E8BE98293FAFF800272C04 /* Poppins-SemiBold.ttf in Resources */,
 				950A9F5C293F31BC00EBB097 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,7 +276,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				950A9F57293F31BA00EBB097 /* WeatherView.swift in Sources */,
+				950A9F78293F485D00EBB097 /* UIView+Extension.swift in Sources */,
+				95E8BEA02940DB0000272C04 /* LocationManager.swift in Sources */,
+				950A9F7E293F5D9200EBB097 /* CollectionViewCell.swift in Sources */,
 				950A9F72293F370F00EBB097 /* WeatherRouter.swift in Sources */,
+				95E8BE9D293FB0EB00272C04 /* NetworkManager.swift in Sources */,
 				950A9F70293F370600EBB097 /* WeatherPresenter.swift in Sources */,
 				950A9F74293F371400EBB097 /* Model.swift in Sources */,
 				950A9F53293F31BA00EBB097 /* AppDelegate.swift in Sources */,
@@ -420,6 +492,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		950A9F7A293F4AF800EBB097 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		950A9F7B293F4AF800EBB097 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 950A9F7A293F4AF800EBB097 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 950A9F47293F31BA00EBB097 /* Project object */;
 }
