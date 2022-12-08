@@ -2,6 +2,8 @@ import CoreLocation
 import Combine
 
 final class LocationManager: NSObject {
+    
+//    static let shared = LocationManager()
         
     private let locationManager = CLLocationManager()
         
@@ -21,6 +23,8 @@ final class LocationManager: NSObject {
             }
         }
     }
+    
+//    private override init() {}
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -31,12 +35,12 @@ extension LocationManager: CLLocationManagerDelegate {
             
             NetworkManager.shared.updateWeatherInfo(latitude: lastLocation.coordinate.latitude,
                                                     longtitude: lastLocation.coordinate.longitude) { [weak self] data in
-                
-                guard let self = self else { return }
+    
                 switch data {
                 case .failure(let error): print(error)
                 case .success(let data):
-                    self.inputSubjectForWeather.send(data)
+                    self?.weatherData = data
+//                    self.inputSubjectForWeather.send(data)
                 }
             }
         }

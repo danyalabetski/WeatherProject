@@ -6,16 +6,16 @@ protocol WeatherPresenterProtocol {
 }
 
 final class WeatherPresenter {
-    
+
     private var cancellables: Set<AnyCancellable> = []
-            
+
     var locationManager: LocationManager?
-    
+
     var weatherData: WeatherData?
-    
+
     unowned let view: WeatherViewProtocol
     private let router: WeatherRouterInput
-    
+
     init(view: WeatherViewProtocol, router: WeatherRouterInput) {
         self.view = view
         self.router = router
@@ -23,7 +23,7 @@ final class WeatherPresenter {
 }
 
 extension WeatherPresenter: WeatherPresenterProtocol {
-   
+
     func getDataForWeatherData() {
         locationManager?.inputSubjectForWeather.sink { [weak self] data in
             self?.weatherData = data
@@ -31,6 +31,4 @@ extension WeatherPresenter: WeatherPresenterProtocol {
         }
         .store(in: &cancellables)
     }
-    
 }
-
