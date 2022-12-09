@@ -3,6 +3,7 @@ import Combine
 protocol WeatherPresenterProtocol {
     var weatherData: WeatherData? { get }
     func getDataForWeatherData()
+    func getRundomJoke()
 }
 
 final class WeatherPresenter {
@@ -12,7 +13,7 @@ final class WeatherPresenter {
     var locationManager: LocationManager?
 
     var weatherData: WeatherData?
-
+    
     unowned let view: WeatherViewProtocol
     private let router: WeatherRouterInput
 
@@ -30,5 +31,17 @@ extension WeatherPresenter: WeatherPresenterProtocol {
             self?.view.updateData()
         }
         .store(in: &cancellables)
+    }
+    
+    func getRundomJoke() {
+        NetworkManager.shared.requestForRundomJoke { [weak self] joke in
+            switch joke {
+            case .failure(let error): print(error.localizedDescription)
+            case .success(let joke):
+                joke.attachments.forEach { oneJoke in
+                    self?.view.updateDataForRundomJokeLabel(text: oneJoke.text)
+                }
+            }
+        }
     }
 }

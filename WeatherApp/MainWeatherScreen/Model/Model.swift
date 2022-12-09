@@ -86,3 +86,19 @@ struct Wind: Codable {
     let deg: Int
     let gust: Double
 }
+
+struct RundomJokeModel: Codable {
+    let attachments: [Attachment]
+    let responseType, username: String
+
+    enum CodingKeys: String, CodingKey {
+        case attachments
+        case responseType = "response_type"
+        case username
+    }
+}
+
+// MARK: - Attachment
+struct Attachment: Codable {
+    let fallback, footer, text: String
+}

@@ -3,6 +3,7 @@ import UIKit
 
 protocol WeatherViewProtocol: AnyObject {
     func updateData()
+    func updateDataForRundomJokeLabel(text: String)
 }
 
 final class WeatherView: UIViewController {
@@ -14,6 +15,8 @@ final class WeatherView: UIViewController {
     // MARK: Public
 
     // MARK: Private
+    
+    private var jokeModel: RundomJokeModel?
 
     private let backgroundImageView = UIImageView()
 
@@ -38,6 +41,12 @@ final class WeatherView: UIViewController {
     private let rundomTextLabel = UILabel()
 
     // MARK: - Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter?.getRundomJoke()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +114,6 @@ final class WeatherView: UIViewController {
         titleRundomTextLabel.text = "Rundom Text"
         titleRundomTextLabel.font = UIFont(name: "Poppins-SemiBold", size: 20)
         
-        rundomTextLabel.text = "Improve him believe opinion offered met and end cheered forbade. Friendly as stronger speedily by recurred. Son interest wandered sir addition end say. Manners beloved affixed picture men ask."
         rundomTextLabel.numberOfLines = 0
         rundomTextLabel.font = UIFont(name: "Poppins-SemiBold", size: 15)
         
@@ -152,8 +160,7 @@ final class WeatherView: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.height.equalTo(170)
             make.bottom.equalTo(backroundView.snp.top).inset(425)
-            make.left.equalToSuperview().inset(34)
-            make.right.equalToSuperview().inset(34)
+            make.left.right.equalToSuperview().inset(34)
         }
         
         titleRundomTextLabel.snp.makeConstraints { make in
@@ -195,7 +202,7 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
 
 //        let data = presenter?.weatherData?.list[indexPath.row]
-
+        
         cell.timeLabel.text = "Now"
         cell.temperatureImageView.image = UIImage(systemName: "sun.min.fill")
         cell.temperatureLabel.text = "21"
@@ -209,6 +216,10 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
 extension WeatherView: WeatherViewProtocol {
     func updateData() {
         collectionView.reloadData()
+    }
+    
+    func updateDataForRundomJokeLabel(text: String) {
+        rundomTextLabel.text = text
     }
 }
 
