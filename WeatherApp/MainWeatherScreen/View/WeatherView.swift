@@ -4,6 +4,7 @@ import UIKit
 protocol WeatherViewProtocol: AnyObject {
     func updateData()
     func updateDataForRundomJokeLabel(text: String)
+    func updateDateForTextLabels(textTemp: String)
 }
 
 final class WeatherView: UIViewController {
@@ -16,8 +17,6 @@ final class WeatherView: UIViewController {
 
     // MARK: Private
     
-    private var jokeModel: RundomJokeModel?
-
     private let backgroundImageView = UIImageView()
 
     private var collectionView: UICollectionView = {
@@ -45,6 +44,7 @@ final class WeatherView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        presenter?.getDataForWeatherData()
         presenter?.getRundomJoke()
     }
 
@@ -194,16 +194,16 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return presenter?.weatherData?.list.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
 
-//        let data = presenter?.weatherData?.list[indexPath.row]
-        
-        cell.timeLabel.text = "Now"
+        let data = presenter?.weatherData?.list[indexPath.row]
+    
+        cell.timeLabel.text = data?.dtTxt
         cell.temperatureImageView.image = UIImage(systemName: "sun.min.fill")
         cell.temperatureLabel.text = "21"
 
@@ -220,6 +220,10 @@ extension WeatherView: WeatherViewProtocol {
     
     func updateDataForRundomJokeLabel(text: String) {
         rundomTextLabel.text = text
+    }
+    
+    func updateDateForTextLabels(textTemp: String) {
+        currentTemperatureLabel.text = textTemp
     }
 }
 

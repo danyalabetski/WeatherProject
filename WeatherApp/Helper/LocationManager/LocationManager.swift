@@ -1,9 +1,16 @@
 import CoreLocation
 import Combine
 
+protocol DataDelegate: AnyObject {
+    func didReceiveData(data: WeatherData)
+}
+
+
 final class LocationManager: NSObject {
     
-//    static let shared = LocationManager()
+    weak var delegate: DataDelegate?
+        
+    static let shared = LocationManager()
         
     private let locationManager = CLLocationManager()
         
@@ -11,6 +18,8 @@ final class LocationManager: NSObject {
     
     var weatherData: WeatherData?
     
+    var completion: ((WeatherData) -> Void)?
+            
     func startLocationManager() {
         locationManager.requestWhenInUseAuthorization()
         
@@ -24,7 +33,11 @@ final class LocationManager: NSObject {
         }
     }
     
-//    private override init() {}
+    func requestData() {
+        
+    }
+    
+    private override init() {}
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -39,8 +52,7 @@ extension LocationManager: CLLocationManagerDelegate {
                 switch data {
                 case .failure(let error): print(error)
                 case .success(let data):
-                    self?.weatherData = data
-//                    self.inputSubjectForWeather.send(data)
+                    self?.completion!(data)
                 }
             }
         }

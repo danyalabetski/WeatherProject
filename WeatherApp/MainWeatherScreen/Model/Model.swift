@@ -29,7 +29,8 @@ struct List: Codable {
     let weather: [Weather]
     let clouds: Clouds
     let wind: Wind
-    let visibility, pop: Int
+    let visibility: Int
+    let pop: Int? = nil
     let sys: Sys
     let dtTxt: String
 

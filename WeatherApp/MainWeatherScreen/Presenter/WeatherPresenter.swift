@@ -1,7 +1,7 @@
 import Combine
 
 protocol WeatherPresenterProtocol {
-    var weatherData: WeatherData? { get }
+    var weatherData: WeatherData? { get set }
     func getDataForWeatherData()
     func getRundomJoke()
 }
@@ -12,7 +12,7 @@ final class WeatherPresenter {
 
     var locationManager: LocationManager?
 
-    var weatherData: WeatherData?
+    var weatherData: WeatherData? 
     
     unowned let view: WeatherViewProtocol
     private let router: WeatherRouterInput
