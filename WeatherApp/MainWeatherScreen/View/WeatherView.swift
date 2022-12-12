@@ -4,7 +4,8 @@ import UIKit
 protocol WeatherViewProtocol: AnyObject {
     func updateData()
     func updateDataForRundomJokeLabel(text: String)
-    func updateDateForTextLabels(textTemp: String)
+    func updateLabels(image: String, temperature: String, condition: String, city: String)
+    func changeBackgoundView(image: String)
 }
 
 final class WeatherView: UIViewController {
@@ -12,11 +13,11 @@ final class WeatherView: UIViewController {
     // MARK: - Properties
 
     var presenter: WeatherPresenterProtocol?
-        
+
     // MARK: Public
 
     // MARK: Private
-    
+
     private let backgroundImageView = UIImageView()
 
     private var collectionView: UICollectionView = {
@@ -35,29 +36,22 @@ final class WeatherView: UIViewController {
     private let currentTemperatureLabel = UILabel()
     private let weatherConditionLabel = UILabel()
     private let cityLabel = UILabel()
-    
+
     private let titleRundomTextLabel = UILabel()
     private let rundomTextLabel = UILabel()
 
     // MARK: - Lifecycle
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         presenter?.getWeatherDataFromWeatherService()
-//        presenter?.getWeatherData()
         presenter?.getRundomJoke()
-        
-        WeatherService().loadWeatherData { weather in
-            let data = weather?.city
-            print("Weather \(String(describing: data))")
-        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        LocationManager.shared.startLocationManager()
+
         setupBehaviorUIElements()
         setupAppearanceUIElements()
     }
@@ -89,7 +83,7 @@ final class WeatherView: UIViewController {
     }
 
     private func setupAppearanceUIElements() {
-        backgroundImageView.image = UIImage(named: "winterImage")
+//        backgroundImageView.image = UIImage(named: "winterImage")
 
         collectionView.backgroundColor = UIColor(red: 0.153, green: 0.184, blue: 0.204, alpha: 0.225)
         collectionView.layer.cornerRadius = 25
@@ -97,33 +91,26 @@ final class WeatherView: UIViewController {
         backroundView.backgroundColor = UIColor(red: 0.153, green: 0.184, blue: 0.204, alpha: 0.225)
         backroundView.layer.cornerRadius = 35
 
-        currentTime.text = "Now"
+        currentTime.text = "Today"
         currentTime.textAlignment = .center
         currentTime.font = UIFont(name: "Poppins-Medium", size: 25)
 
-        temperatureImageView.image = UIImage(systemName: "sun.min.fill")
         temperatureImageView.contentMode = .scaleAspectFit
 
-        
-        currentTemperatureLabel.text = "32"
         currentTemperatureLabel.textAlignment = .center
         currentTemperatureLabel.font = UIFont(name: "Poppins-SemiBold", size: 100)
-        
-        weatherConditionLabel.text = "Sunny"
+
         weatherConditionLabel.textAlignment = .center
         weatherConditionLabel.font = UIFont(name: "Poppins-SemiBold", size: 20)
-        
-        cityLabel.text = "New York"
+
         cityLabel.textAlignment = .center
         cityLabel.font = UIFont(name: "Poppins-Medium", size: 15)
-        
-        
+
         titleRundomTextLabel.text = "Rundom Text"
         titleRundomTextLabel.font = UIFont(name: "Poppins-SemiBold", size: 20)
-        
+
         rundomTextLabel.numberOfLines = 0
         rundomTextLabel.font = UIFont(name: "Poppins-SemiBold", size: 15)
-        
     }
 
     private func setupConstraints() {
@@ -137,8 +124,8 @@ final class WeatherView: UIViewController {
 
         currentTime.snp.makeConstraints { make in
             make.top.equalTo(backroundView.snp.top).inset(20)
-            make.left.equalTo(backroundView.snp.left).inset(120)
-            make.right.equalTo(backroundView.snp.right).inset(120)
+            make.left.equalTo(backroundView.snp.left).inset(100)
+            make.right.equalTo(backroundView.snp.right).inset(100)
         }
 
         temperatureImageView.snp.makeConstraints { make in
@@ -151,13 +138,13 @@ final class WeatherView: UIViewController {
             make.top.equalTo(backroundView.snp.top).inset(48)
             make.right.equalTo(backroundView.snp.right).inset(60)
         }
-        
+
         weatherConditionLabel.snp.makeConstraints { make in
             make.top.equalTo(currentTemperatureLabel.snp.bottom).inset(15)
-            make.left.equalTo(backroundView.snp.left).inset(120)
-            make.right.equalTo(backroundView.snp.right).inset(120)
+            make.left.equalTo(backroundView.snp.left).inset(50)
+            make.right.equalTo(backroundView.snp.right).inset(50)
         }
-        
+
         cityLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
             make.left.equalTo(backroundView.snp.left).inset(100)
@@ -169,12 +156,12 @@ final class WeatherView: UIViewController {
             make.bottom.equalTo(backroundView.snp.top).inset(425)
             make.left.right.equalToSuperview().inset(34)
         }
-        
+
         titleRundomTextLabel.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom).inset(-10)
             make.left.equalToSuperview().inset(34)
         }
-        
+
         rundomTextLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(34)
             make.top.equalTo(titleRundomTextLabel.snp.top).inset(30)
@@ -201,22 +188,21 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.weatherData?.list.count ?? 0
+        presenter?.weatherData?.list.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
 
-        
         let data = presenter?.weatherData?.list[indexPath.row]
-        
+
         let weather = presenter?.weatherData?.list[0]
         let icons = weather?.weather[0]
-        
+
         cell.timeLabel.text = data?.dtTxt
         cell.temperatureImageView.image = UIImage(named: icons?.icon ?? "")
-        cell.temperatureLabel.text = data?.main.temp.formatted()
+        cell.temperatureLabel.text = (data?.main.temp.formatted() ?? "") + "°"
 
         return cell
     }
@@ -228,15 +214,22 @@ extension WeatherView: WeatherViewProtocol {
     func updateData() {
         collectionView.reloadData()
     }
-    
+
     func updateDataForRundomJokeLabel(text: String) {
         rundomTextLabel.text = text
     }
-    
-    func updateDateForTextLabels(textTemp: String) {
-        currentTemperatureLabel.text = textTemp
+
+    func updateLabels(image: String, temperature: String, condition: String, city: String) {
+        temperatureImageView.image = UIImage(named: image)
+        currentTemperatureLabel.text = temperature
+        weatherConditionLabel.text = condition
+        cityLabel.text = city
     }
-}
+    
+    func changeBackgoundView(image: String) {
+        backgroundImageView.image = UIImage(named: image)
+    }
+ }
 
 // import SwiftUI
 //
