@@ -1,19 +1,20 @@
-import Combine
+import Foundation
 
 protocol WeatherPresenterProtocol {
-    var weatherData: WeatherData? { get set }
-    func getDataForWeatherData()
+    var weatherData: MainWeather? { get }
+//    func getWeatherData()
+    func getWeatherDataFromWeatherService()
     func getRundomJoke()
 }
 
 final class WeatherPresenter {
 
-    private var cancellables: Set<AnyCancellable> = []
+//    var locationManager: LocationManager?
 
-    var locationManager: LocationManager?
-
-    var weatherData: WeatherData? 
-    
+    var weatherData: MainWeather?
+        
+    var weatherService: WeatherService?
+            
     unowned let view: WeatherViewProtocol
     private let router: WeatherRouterInput
 
@@ -24,14 +25,26 @@ final class WeatherPresenter {
 }
 
 extension WeatherPresenter: WeatherPresenterProtocol {
-
-    func getDataForWeatherData() {
-        locationManager?.inputSubjectForWeather.sink { [weak self] data in
-            self?.weatherData = data
-            self?.view.updateData()
-        }
-        .store(in: &cancellables)
+    
+    func getWeatherDataFromWeatherService() {
+        weatherService?.loadWeatherData({ weather in
+            DispatchQueue.main.async {
+                self.weatherData = weather
+                self.view.updateData()
+            }
+        })
     }
+
+//    func getWeatherData() {
+//        NetworkManager.shared.updateWeatherInfo(latitude: 37.32514788, longtitude: -122.02506739) { weather in
+//            switch weather {
+//            case .failure(let error): print(error.localizedDescription)
+//            case .success(let weather):
+//                self.weatherData = weather
+//                self.view.updateData()
+//            }
+//        }
+//    }
     
     func getRundomJoke() {
         NetworkManager.shared.requestForRundomJoke { [weak self] joke in

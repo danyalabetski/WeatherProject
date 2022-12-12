@@ -12,7 +12,7 @@ final class WeatherView: UIViewController {
     // MARK: - Properties
 
     var presenter: WeatherPresenterProtocol?
-
+        
     // MARK: Public
 
     // MARK: Private
@@ -44,14 +44,20 @@ final class WeatherView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter?.getDataForWeatherData()
+        presenter?.getWeatherDataFromWeatherService()
+//        presenter?.getWeatherData()
         presenter?.getRundomJoke()
+        
+        WeatherService().loadWeatherData { weather in
+            let data = weather?.city
+            print("Weather \(String(describing: data))")
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        LocationManager.shared.startLocationManager()
+        
+        LocationManager.shared.startLocationManager()
         setupBehaviorUIElements()
         setupAppearanceUIElements()
     }
@@ -98,6 +104,7 @@ final class WeatherView: UIViewController {
         temperatureImageView.image = UIImage(systemName: "sun.min.fill")
         temperatureImageView.contentMode = .scaleAspectFit
 
+        
         currentTemperatureLabel.text = "32"
         currentTemperatureLabel.textAlignment = .center
         currentTemperatureLabel.font = UIFont(name: "Poppins-SemiBold", size: 100)
@@ -201,11 +208,15 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
 
+        
         let data = presenter?.weatherData?.list[indexPath.row]
-    
+        
+        let weather = presenter?.weatherData?.list[0]
+        let icons = weather?.weather[0]
+        
         cell.timeLabel.text = data?.dtTxt
-        cell.temperatureImageView.image = UIImage(systemName: "sun.min.fill")
-        cell.temperatureLabel.text = "21"
+        cell.temperatureImageView.image = UIImage(named: icons?.icon ?? "")
+        cell.temperatureLabel.text = data?.main.temp.formatted()
 
         return cell
     }
