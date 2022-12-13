@@ -4,6 +4,7 @@ protocol WeatherPresenterProtocol {
     var weatherData: MainWeather? { get }
     func getWeatherDataFromWeatherService()
     func getRundomJoke()
+    func changeImageForBackgroundView()
 }
 
 final class WeatherPresenter {
@@ -22,8 +23,12 @@ final class WeatherPresenter {
         self.networkManagerProtocol = NetworkManager()
     }
 
-    var arrayImage: String = [""]
-    
+    func changeImageForBackgroundView() {
+        
+        let arrayIcons = ["IMG1", "IMG2", "IMG3", "IMG4", "IMG5", "IMG6", "IMG7", "IMG8", "IMG9", "winterImage"]
+        
+        self.view.changeBackgoundView(image: arrayIcons.randomElement() ?? "")
+    }
 }
 
 extension WeatherPresenter: WeatherPresenterProtocol {
@@ -36,6 +41,7 @@ extension WeatherPresenter: WeatherPresenterProtocol {
                                        temperature: "\(Int(weather?.list[0].main.temp ?? 0))°",
                                        condition: weather?.list[0].weather[0].weatherDescription ?? "",
                                        city: weather?.city.name ?? "")
+                
                 self.view.updateData()
             }
         }

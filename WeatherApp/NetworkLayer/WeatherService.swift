@@ -16,14 +16,14 @@ final class WeatherService: NSObject {
         DispatchQueue.global().async {
             if CLLocationManager.locationServicesEnabled() {
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-                self.locationManager.pausesLocationUpdatesAutomatically = false
+                self.locationManager.pausesLocationUpdatesAutomatically = true
                 self.locationManager.startUpdatingLocation()
             }
         }
     }
 
-    private func makeDataRequest(latitude: Double, longitude: Double) {
-        guard let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&cnt=5&appid=c88dea33fd6e93919619685eb9fdc45c&units=metric"
+    private func makeDataRequest(forCoordinates coordinates: CLLocationCoordinate2D) {
+        guard let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&cnt=5&appid=c88dea33fd6e93919619685eb9fdc45c&units=metric"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
         print("URL\(urlString)")
@@ -48,10 +48,8 @@ final class WeatherService: NSObject {
 extension WeatherService: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
-        if let location = locations.last {
-            print(location.coordinate.latitude, location.coordinate.longitude)
-            makeDataRequest(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        }
+        guard let location = locations.first else { return }
+            makeDataRequest(forCoordinates: location.coordinate)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

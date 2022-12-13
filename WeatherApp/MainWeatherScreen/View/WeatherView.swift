@@ -45,6 +45,7 @@ final class WeatherView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        presenter?.changeImageForBackgroundView()
         presenter?.getWeatherDataFromWeatherService()
         presenter?.getRundomJoke()
     }
@@ -92,24 +93,17 @@ final class WeatherView: UIViewController {
         backroundView.layer.cornerRadius = 35
 
         currentTime.text = "Today"
-        currentTime.textAlignment = .center
-        currentTime.font = UIFont(name: "Poppins-Medium", size: 25)
+        currentTime.customLabel(nameFont: "Poppins-Medium", sizeFont: 25)
 
-        temperatureImageView.contentMode = .scaleAspectFit
+        temperatureImageView.contentMode = .scaleAspectFill
 
-        currentTemperatureLabel.textAlignment = .center
-        currentTemperatureLabel.font = UIFont(name: "Poppins-SemiBold", size: 100)
-
-        weatherConditionLabel.textAlignment = .center
-        weatherConditionLabel.font = UIFont(name: "Poppins-SemiBold", size: 20)
-
-        cityLabel.textAlignment = .center
-        cityLabel.font = UIFont(name: "Poppins-Medium", size: 15)
-
-        titleRundomTextLabel.text = "Rundom Text"
-        titleRundomTextLabel.font = UIFont(name: "Poppins-SemiBold", size: 20)
+        currentTemperatureLabel.customLabel(nameFont: "Poppins-SemiBold", sizeFont: 100)
+        weatherConditionLabel.customLabel(nameFont: "Poppins-SemiBold", sizeFont: 20)
+        cityLabel.customLabel(nameFont: "Poppins-Medium", sizeFont: 15)
+        titleRundomTextLabel.customLabel(nameFont: "Poppins-SemiBold", sizeFont: 20)
 
         rundomTextLabel.numberOfLines = 0
+        rundomTextLabel.textColor = UIColor(named: "CustomColor")
         rundomTextLabel.font = UIFont(name: "Poppins-SemiBold", size: 15)
     }
 
@@ -200,9 +194,9 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         let weather = presenter?.weatherData?.list[0]
         let icons = weather?.weather[0]
 
-        cell.timeLabel.text = data?.dtTxt
+        cell.timeLabel.text = data?.dtTxt.toJutTime()
         cell.temperatureImageView.image = UIImage(named: icons?.icon ?? "")
-        cell.temperatureLabel.text = (data?.main.temp.formatted() ?? "") + "°"
+        cell.temperatureLabel.text = "\(Int(data?.main.temp ?? 0))°"
 
         return cell
     }

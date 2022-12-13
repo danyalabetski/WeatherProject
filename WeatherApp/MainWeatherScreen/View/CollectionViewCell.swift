@@ -29,13 +29,11 @@ final class CollectionViewCell: UICollectionViewCell {
     private func setupAppearance() {
 
         contentView.backgroundColor = .clear
-        
-        timeLabel.textAlignment = .center
-        temperatureLabel.textAlignment = .center
-        temperatureImageView.contentMode = .scaleAspectFit
-        
-        timeLabel.font = UIFont(name: "Poppins-Regular", size: 15)
-        temperatureLabel.font = UIFont(name: "Poppins-Regular", size: 15)
+
+        temperatureImageView.contentMode = .scaleAspectFill
+
+        timeLabel.customLabel(nameFont: "Poppins-Regular", sizeFont: 15)
+        temperatureLabel.customLabel(nameFont: "Poppins-Regular", sizeFont: 15)
     }
 
     private func setupConstraints() {
