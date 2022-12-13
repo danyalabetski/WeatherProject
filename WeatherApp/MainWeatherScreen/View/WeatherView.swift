@@ -166,7 +166,9 @@ final class WeatherView: UIViewController {
 
     @objc private func addNewCountryDidTappedButton() {}
 
-    @objc private func myLocationDidTappedButton() {}
+    @objc private func myLocationDidTappedButton() {
+        presenter?.pushMapViewDidTapped()
+    }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout

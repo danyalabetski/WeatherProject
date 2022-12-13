@@ -5,6 +5,7 @@ protocol WeatherPresenterProtocol {
     func getWeatherDataFromWeatherService()
     func getRundomJoke()
     func changeImageForBackgroundView()
+    func pushMapViewDidTapped()
 }
 
 final class WeatherPresenter {
@@ -57,5 +58,9 @@ extension WeatherPresenter: WeatherPresenterProtocol {
                 }
             }
         })
+    }
+    
+    func pushMapViewDidTapped() {
+        router.pushMapView()
     }
 }

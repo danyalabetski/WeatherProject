@@ -1,6 +1,8 @@
 import UIKit
 
-protocol WeatherRouterInput {}
+protocol WeatherRouterInput {
+    func pushMapView()
+}
 
 final class WeatherRouter {
 
@@ -16,4 +18,8 @@ final class WeatherRouter {
     }
 }
 
-extension WeatherRouter: WeatherRouterInput {}
+extension WeatherRouter: WeatherRouterInput {
+    func pushMapView() {
+        let _ = MapRouter(navigationController: navigationController)
+    }
+}
