@@ -24,6 +24,9 @@
 		95B545412948C16000788424 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B545402948C16000788424 /* MapView.swift */; };
 		95B545432948C17000788424 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B545422948C17000788424 /* MapPresenter.swift */; };
 		95B545452948C17500788424 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B545442948C17500788424 /* Router.swift */; };
+		95B5454F2949F78900788424 /* AddNewCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5454E2949F78900788424 /* AddNewCityView.swift */; };
+		95B545512949F79000788424 /* AddNewCityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B545502949F79000788424 /* AddNewCityPresenter.swift */; };
+		95B545532949F79900788424 /* AddNewCityRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B545522949F79900788424 /* AddNewCityRouter.swift */; };
 		95E8BE98293FAFF800272C04 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95E8BE97293FAFF800272C04 /* Poppins-SemiBold.ttf */; };
 		95E8BE9A293FB04E00272C04 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95E8BE99293FB04E00272C04 /* Poppins-Medium.ttf */; };
 		95E8BE9D293FB0EB00272C04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8BE9C293FB0EB00272C04 /* NetworkManager.swift */; };
@@ -48,6 +51,9 @@
 		95B545402948C16000788424 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		95B545422948C17000788424 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		95B545442948C17500788424 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		95B5454E2949F78900788424 /* AddNewCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityView.swift; sourceTree = "<group>"; };
+		95B545502949F79000788424 /* AddNewCityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityPresenter.swift; sourceTree = "<group>"; };
+		95B545522949F79900788424 /* AddNewCityRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityRouter.swift; sourceTree = "<group>"; };
 		95E8BE97293FAFF800272C04 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		95E8BE99293FB04E00272C04 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		95E8BE9C293FB0EB00272C04 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 				95E8BE9B293FB0C000272C04 /* NetworkLayer */,
 				950A9F69293F360B00EBB097 /* MainWeatherScreen */,
 				95B5453C2948C08600788424 /* MapScreen */,
+				95B545462949F6B900788424 /* AddNewCityScreen */,
 				950A9F67293F334500EBB097 /* Utility */,
 			);
 			path = WeatherApp;
@@ -227,6 +234,48 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		95B545462949F6B900788424 /* AddNewCityScreen */ = {
+			isa = PBXGroup;
+			children = (
+				95B545472949F6D000788424 /* Model */,
+				95B545482949F6DB00788424 /* View */,
+				95B5454A2949F75200788424 /* Presenter */,
+				95B5454B2949F75C00788424 /* Router */,
+			);
+			path = AddNewCityScreen;
+			sourceTree = "<group>";
+		};
+		95B545472949F6D000788424 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95B545482949F6DB00788424 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95B5454E2949F78900788424 /* AddNewCityView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		95B5454A2949F75200788424 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				95B545502949F79000788424 /* AddNewCityPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		95B5454B2949F75C00788424 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				95B545522949F79900788424 /* AddNewCityRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		95E8BE9B293FB0C000272C04 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +372,9 @@
 				950A9F7E293F5D9200EBB097 /* CollectionViewCell.swift in Sources */,
 				95B545452948C17500788424 /* Router.swift in Sources */,
 				950A9F72293F370F00EBB097 /* WeatherRouter.swift in Sources */,
+				95B545512949F79000788424 /* AddNewCityPresenter.swift in Sources */,
+				95B545532949F79900788424 /* AddNewCityRouter.swift in Sources */,
+				95B5454F2949F78900788424 /* AddNewCityView.swift in Sources */,
 				95E8BE9D293FB0EB00272C04 /* NetworkManager.swift in Sources */,
 				950A9F70293F370600EBB097 /* WeatherPresenter.swift in Sources */,
 				95B5453B2948839400788424 /* UILabel+Extension.swift in Sources */,

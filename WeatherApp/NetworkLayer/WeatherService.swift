@@ -18,6 +18,8 @@ final class WeatherService: NSObject {
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
                 self.locationManager.pausesLocationUpdatesAutomatically = true
                 self.locationManager.startUpdatingLocation()
+            } else {
+                return
             }
         }
     }

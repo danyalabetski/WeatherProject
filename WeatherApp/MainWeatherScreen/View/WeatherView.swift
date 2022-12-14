@@ -76,7 +76,7 @@ final class WeatherView: UIViewController {
 
         backroundView.clipsToBounds = false
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewCountryDidTappedButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewCityDidTappedButton))
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location.fill.viewfinder"), style: .done, target: self, action: #selector(myLocationDidTappedButton))
 
@@ -84,8 +84,6 @@ final class WeatherView: UIViewController {
     }
 
     private func setupAppearanceUIElements() {
-//        backgroundImageView.image = UIImage(named: "winterImage")
-
         collectionView.backgroundColor = UIColor(red: 0.153, green: 0.184, blue: 0.204, alpha: 0.225)
         collectionView.layer.cornerRadius = 25
 
@@ -164,10 +162,12 @@ final class WeatherView: UIViewController {
 
     // MARK: - Helpers
 
-    @objc private func addNewCountryDidTappedButton() {}
+    @objc private func addNewCityDidTappedButton() {
+        presenter?.pushAddNewCityScreen()
+    }
 
     @objc private func myLocationDidTappedButton() {
-        presenter?.pushMapViewDidTapped()
+        presenter?.pushMapScreen()
     }
 }
 

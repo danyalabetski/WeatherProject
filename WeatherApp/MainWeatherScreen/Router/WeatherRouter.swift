@@ -1,7 +1,8 @@
 import UIKit
 
 protocol WeatherRouterInput {
-    func pushMapView()
+    func pushMapScreen()
+    func pushAddNewCityScreen()
 }
 
 final class WeatherRouter {
@@ -19,7 +20,11 @@ final class WeatherRouter {
 }
 
 extension WeatherRouter: WeatherRouterInput {
-    func pushMapView() {
+    func pushMapScreen() {
         let _ = MapRouter(navigationController: navigationController)
+    }
+    
+    func pushAddNewCityScreen() {
+        let _ = AddNewCityRouter(navigationController: navigationController)
     }
 }

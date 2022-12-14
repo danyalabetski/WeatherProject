@@ -5,7 +5,8 @@ protocol WeatherPresenterProtocol {
     func getWeatherDataFromWeatherService()
     func getRundomJoke()
     func changeImageForBackgroundView()
-    func pushMapViewDidTapped()
+    func pushMapScreen()
+    func pushAddNewCityScreen()
 }
 
 final class WeatherPresenter {
@@ -26,7 +27,7 @@ final class WeatherPresenter {
 
     func changeImageForBackgroundView() {
         
-        let arrayIcons = ["IMG1", "IMG2", "IMG3", "IMG4", "IMG5", "IMG6", "IMG7", "IMG8", "IMG9", "winterImage"]
+        let arrayIcons = ["IMG1", "IMG2", "IMG3", "IMG5", "IMG6", "IMG7", "IMG8", "IMG9", "winterImage"]
         
         self.view.changeBackgoundView(image: arrayIcons.randomElement() ?? "")
     }
@@ -60,7 +61,11 @@ extension WeatherPresenter: WeatherPresenterProtocol {
         })
     }
     
-    func pushMapViewDidTapped() {
-        router.pushMapView()
+    func pushMapScreen() {
+        router.pushMapScreen()
+    }
+    
+    func pushAddNewCityScreen() {
+        router.pushAddNewCityScreen()
     }
 }

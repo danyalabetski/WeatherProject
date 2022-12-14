@@ -1,20 +1,23 @@
 import UIKit
 
-protocol MapRouterProtocol {}
+protocol AddNewCityRouterProtocol {
+    
+}
 
-final class MapRouter {
-
+final class AddNewCityRouter {
     private let navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-
-        let view = MapView()
-        let presenter = MapPresenter(view: view, router: self)
+        
+        let view = AddNewCityView()
+        let presenter = AddNewCityPresenter(view: view, router: self)
         view.presenter = presenter
-
+        
         navigationController.pushViewController(view, animated: true)
     }
 }
 
-extension MapRouter: MapRouterProtocol {}
+extension AddNewCityRouter: AddNewCityRouterProtocol {
+    
+}
