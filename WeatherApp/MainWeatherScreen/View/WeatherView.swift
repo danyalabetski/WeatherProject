@@ -122,13 +122,13 @@ final class WeatherView: UIViewController {
 
         temperatureImageView.snp.makeConstraints { make in
             make.top.equalTo(backroundView.snp.top).inset(86)
-            make.left.equalTo(backroundView.snp.left).inset(60)
+            make.left.equalTo(backroundView.snp.left).inset(45)
             make.height.width.equalTo(72)
         }
 
         currentTemperatureLabel.snp.makeConstraints { make in
             make.top.equalTo(backroundView.snp.top).inset(48)
-            make.right.equalTo(backroundView.snp.right).inset(60)
+            make.right.equalTo(backroundView.snp.right).inset(40)
         }
 
         weatherConditionLabel.snp.makeConstraints { make in

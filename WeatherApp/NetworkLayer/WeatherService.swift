@@ -28,8 +28,6 @@ final class WeatherService: NSObject {
         guard let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&cnt=5&appid=c88dea33fd6e93919619685eb9fdc45c&units=metric"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
-        print("URL\(urlString)")
-
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -38,7 +36,7 @@ final class WeatherService: NSObject {
             do {
                 let response = try JSONDecoder().decode(MainWeather.self, from: data)
                 self.completionHandler?(response)
-                print("data: \(response)")
+//                print("data: \(response)")
             } catch {
                 print("Error: \(error.localizedDescription)")
             }
