@@ -49,7 +49,7 @@ extension WeatherService: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         guard let location = locations.first else { return }
-            makeDataRequest(forCoordinates: location.coordinate)
+        makeDataRequest(forCoordinates: location.coordinate)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

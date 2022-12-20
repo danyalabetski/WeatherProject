@@ -26,10 +26,10 @@ final class WeatherPresenter {
     }
 
     func changeImageForBackgroundView() {
-        
+
         let arrayIcons = ["IMG1", "IMG2", "IMG3", "IMG5", "IMG6", "IMG7", "IMG8", "IMG9", "winterImage"]
-        
-        self.view.changeBackgoundView(image: arrayIcons.randomElement() ?? "")
+
+        view.changeBackgoundView(image: arrayIcons.randomElement() ?? "")
     }
 }
 
@@ -43,7 +43,7 @@ extension WeatherPresenter: WeatherPresenterProtocol {
                                        temperature: "\(Int(weather?.list[0].main.temp ?? 0))°",
                                        condition: weather?.list[0].weather[0].weatherDescription ?? "",
                                        city: weather?.city.name ?? "")
-                
+
                 self.view.updateData()
             }
         }
@@ -60,11 +60,11 @@ extension WeatherPresenter: WeatherPresenterProtocol {
             }
         })
     }
-    
+
     func pushMapScreen() {
         router.pushMapScreen()
     }
-    
+
     func pushAddNewCityScreen() {
         router.pushAddNewCityScreen()
     }

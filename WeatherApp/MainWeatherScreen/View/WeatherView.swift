@@ -63,8 +63,6 @@ final class WeatherView: UIViewController {
         setupConstraints()
     }
 
-    // MARK: - API
-
     // MARK: - Setups
 
     private func setupBehaviorUIElements() {
@@ -221,26 +219,8 @@ extension WeatherView: WeatherViewProtocol {
         weatherConditionLabel.text = condition
         cityLabel.text = city
     }
-    
+
     func changeBackgoundView(image: String) {
         backgroundImageView.image = UIImage(named: image)
     }
- }
-
-// import SwiftUI
-//
-// struct CompositionalPrivider: PreviewProvider {
-//    static var previews: some View {
-//        ContainerView().edgesIgnoringSafeArea(.all)
-//    }
-//
-//    struct ContainerView: UIViewControllerRepresentable {
-//
-//        let tabBar = WeatherView()
-//        func makeUIViewController(context: UIViewControllerRepresentableContext<CompositionalPrivider.ContainerView>) -> WeatherView {
-//            tabBar
-//        }
-//
-//        func updateUIViewController(_ uiViewController: CompositionalPrivider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<CompositionalPrivider.ContainerView>) {}
-//    }
-// }
+}

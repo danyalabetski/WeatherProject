@@ -21,10 +21,10 @@ final class WeatherRouter {
 
 extension WeatherRouter: WeatherRouterInput {
     func pushMapScreen() {
-        let _ = MapRouter(navigationController: navigationController)
+        _ = MapRouter(navigationController: navigationController)
     }
-    
+
     func pushAddNewCityScreen() {
-        let _ = AddNewCityRouter(navigationController: navigationController)
+        _ = AddNewCityRouter(navigationController: navigationController)
     }
 }

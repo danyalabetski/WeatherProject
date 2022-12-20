@@ -6,7 +6,7 @@ protocol WeatherServiceForSearchCityProtocol {
 }
 
 final class WeatherServiceForSearchCity: WeatherServiceForSearchCityProtocol {
-    
+
     var city = ""
 
     func requestForWeatherInCity(completion: @escaping ((Result<MainSearchWeatherCity, Error>) -> Void)) {
