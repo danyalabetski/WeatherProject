@@ -14,8 +14,6 @@ final class WeatherView: UIViewController {
 
     var presenter: WeatherPresenterProtocol?
 
-    // MARK: Public
-
     // MARK: Private
 
     private let backgroundImageView = UIImageView()

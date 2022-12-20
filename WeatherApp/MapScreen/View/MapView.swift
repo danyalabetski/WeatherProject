@@ -10,8 +10,6 @@ final class MapView: UIViewController {
 
     var presenter: MapPresenterProtocol?
 
-    // MARK: Public
-
     // MARK: Private
 
     private let mapView = MKMapView()
@@ -60,8 +58,6 @@ final class MapView: UIViewController {
     private func setupConstraints() {
         mapView.frame = view.bounds
     }
-
-    // MARK: - Helpers
 }
 
 extension MapView: CLLocationManagerDelegate {

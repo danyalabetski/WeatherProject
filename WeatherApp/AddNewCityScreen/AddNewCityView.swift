@@ -13,8 +13,6 @@ final class AddNewCityView: UIViewController {
 
     var presenter: AddNewCityPresenterProtocol?
 
-    // MARK: Public
-
     // MARK: Private
 
     private let searchController = UISearchController(searchResultsController: nil)
@@ -106,8 +104,6 @@ final class AddNewCityView: UIViewController {
             make.width.height.equalTo(100)
         }
     }
-
-    // MARK: - Helpers
 }
 
 // MARK: - SearchBar

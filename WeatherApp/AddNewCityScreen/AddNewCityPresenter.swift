@@ -1,5 +1,4 @@
 import Foundation
-import Combine
 
 protocol AddNewCityPresenterProtocol {
     var weatherModel: MainSearchWeatherCity? { get }
@@ -46,9 +45,9 @@ extension AddNewCityPresenter: AddNewCityPresenterProtocol {
         network?.city = text
         getWeatherForCity()
     }
-    
+
     func changeImageForBackgroundView() {
-        
+
         let arrayIcons = ["IMG1", "IMG2", "IMG3", "IMG5", "IMG6", "IMG7", "IMG8", "IMG9", "winterImage"]
 
         view.changeBackgoundView(image: arrayIcons.randomElement() ?? "")
