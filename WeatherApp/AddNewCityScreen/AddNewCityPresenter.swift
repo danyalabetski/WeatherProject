@@ -29,7 +29,6 @@ extension AddNewCityPresenter: AddNewCityPresenterProtocol {
                 case .failure(let error): print(error.localizedDescription)
                 case .success(let weather):
                     self.weatherModel = weather
-                    self.view.reloadData()
                 }
             }
         })
