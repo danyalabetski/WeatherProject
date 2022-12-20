@@ -60,8 +60,6 @@ final class AddNewCityView: UIViewController {
     private func setupBehaviorUIElements() {
         view.addSubview(tableView)
 //        view.addSubviews(view: nameCityLabel, temperatureLabel, descriptionLabel, iconImage)
-        
-        
     }
 
     private func setupAppearanceUIElements() {

@@ -23,10 +23,10 @@ final class WeatherView: UIViewController {
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
-        cv.showsHorizontalScrollIndicator = false
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
     }()
 
     private let backroundView = UIView()
@@ -196,7 +196,7 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         let weather = presenter?.weatherData?.list[0]
         let icons = weather?.weather[0]
 
-        cell.timeLabel.text = data?.dtTxt.toJutTime()
+        cell.timeLabel.text = data?.dtTxt.toJustTime()
         cell.temperatureImageView.image = UIImage(named: icons?.icon ?? "")
         cell.temperatureLabel.text = "\(Int(data?.main.temp ?? 0))°"
 
