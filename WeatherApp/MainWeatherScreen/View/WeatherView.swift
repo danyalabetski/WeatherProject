@@ -139,20 +139,19 @@ final class WeatherView: UIViewController {
 
         cityLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
-            make.left.equalTo(backroundView.snp.left).inset(100)
-//            make.right.equalTo(backroundView.snp.right).inset(100)
+            make.left.equalTo(backroundView.snp.left).inset(105)
         }
         
         seperatorView.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
-            make.left.equalTo(cityLabel.snp.right).inset(-10)
+            make.left.equalTo(cityLabel.snp.right).inset(-15)
             make.width.equalTo(1)
             make.height.equalTo(20)
         }
         
         countyLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
-            make.left.equalTo(cityLabel.snp.right).inset(-20)
+            make.left.equalTo(cityLabel.snp.right).inset(-30)
         }
 
         collectionView.snp.makeConstraints { make in
