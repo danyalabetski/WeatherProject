@@ -42,7 +42,8 @@ extension WeatherPresenter: WeatherPresenterProtocol {
                 self.view.updateLabels(image: weather?.list[0].weather[0].icon ?? "",
                                        temperature: "\(Int(weather?.list[0].main.temp ?? 0))°",
                                        condition: weather?.list[0].weather[0].weatherDescription ?? "",
-                                       city: weather?.city.name ?? "")
+                                       city: weather?.city.name ?? "",
+                                       country: weather?.city.country ?? "")
 
                 self.view.updateData()
             }

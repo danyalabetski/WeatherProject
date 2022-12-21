@@ -4,7 +4,7 @@ import UIKit
 protocol WeatherViewProtocol: AnyObject {
     func updateData()
     func updateDataForRundomJokeLabel(text: String)
-    func updateLabels(image: String, temperature: String, condition: String, city: String)
+    func updateLabels(image: String, temperature: String, condition: String, city: String, country: String)
     func changeBackgoundView(image: String)
 }
 
@@ -34,6 +34,8 @@ final class WeatherView: UIViewController {
     private let currentTemperatureLabel = UILabel()
     private let weatherConditionLabel = UILabel()
     private let cityLabel = UILabel()
+    private let seperatorView = UIView()
+    private let countyLabel = UILabel()
 
     private let titleRundomTextLabel = UILabel()
     private let rundomTextLabel = UILabel()
@@ -65,14 +67,14 @@ final class WeatherView: UIViewController {
 
     private func setupBehaviorUIElements() {
 
-        view.addSubviews(view: backgroundImageView, collectionView, backroundView, currentTime, temperatureImageView, currentTemperatureLabel, weatherConditionLabel, cityLabel, titleRundomTextLabel, rundomTextLabel)
+        view.addSubviews(view: backgroundImageView, collectionView, backroundView, currentTime, temperatureImageView, currentTemperatureLabel, weatherConditionLabel, cityLabel, seperatorView, countyLabel, titleRundomTextLabel, rundomTextLabel)
 
         collectionView.delegate = self
         collectionView.dataSource = self
 
         backroundView.clipsToBounds = false
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewCityDidTappedButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(addNewCityDidTappedButton))
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location.fill.viewfinder"), style: .done, target: self, action: #selector(myLocationDidTappedButton))
 
@@ -94,6 +96,8 @@ final class WeatherView: UIViewController {
         currentTemperatureLabel.customLabel(nameFont: "Poppins-SemiBold", sizeFont: 100)
         weatherConditionLabel.customLabel(nameFont: "Poppins-SemiBold", sizeFont: 20)
         cityLabel.customLabel(nameFont: "Poppins-Medium", sizeFont: 15)
+        countyLabel.customLabel(nameFont: "Poppins-Medium", sizeFont: 15)
+        seperatorView.backgroundColor = UIColor(named: "CustomColor")
         titleRundomTextLabel.customLabel(nameFont: "Poppins-SemiBold", sizeFont: 20)
 
         rundomTextLabel.numberOfLines = 0
@@ -136,7 +140,19 @@ final class WeatherView: UIViewController {
         cityLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
             make.left.equalTo(backroundView.snp.left).inset(100)
-            make.right.equalTo(backroundView.snp.right).inset(100)
+//            make.right.equalTo(backroundView.snp.right).inset(100)
+        }
+        
+        seperatorView.snp.makeConstraints { make in
+            make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
+            make.left.equalTo(cityLabel.snp.right).inset(-10)
+            make.width.equalTo(1)
+            make.height.equalTo(20)
+        }
+        
+        countyLabel.snp.makeConstraints { make in
+            make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
+            make.left.equalTo(cityLabel.snp.right).inset(-20)
         }
 
         collectionView.snp.makeConstraints { make in
@@ -211,11 +227,12 @@ extension WeatherView: WeatherViewProtocol {
         rundomTextLabel.text = text
     }
 
-    func updateLabels(image: String, temperature: String, condition: String, city: String) {
+    func updateLabels(image: String, temperature: String, condition: String, city: String, country: String) {
         temperatureImageView.image = UIImage(named: image)
         currentTemperatureLabel.text = temperature
         weatherConditionLabel.text = condition
         cityLabel.text = city
+        countyLabel.text = country
     }
 
     func changeBackgoundView(image: String) {

@@ -32,7 +32,7 @@ extension AddNewCityPresenter: AddNewCityPresenterProtocol {
                     print(error.localizedDescription)
                 case .success(let weather):
                     self.weatherModel = weather
-                    self.view.getDataForLabel(temperature: "\(Int(weather.list[0].main.temp))",
+                    self.view.getDataForLabel(temperature: "\(Int(weather.list[0].main.temp))°",
                                               city: weather.city.name,
                                               descriptionWeather: weather.list[0].weather[0].description,
                                               icon: weather.list[0].weather[0].icon)
