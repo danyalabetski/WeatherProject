@@ -75,6 +75,6 @@ Website with the Weather API
 
 ## Screenshots
 
-![App Screenshot](SimulatorScreen Shot-iPhone14-2022-12-22at 14.24.18.png)
+![App Screenshot](SimulatorScreenShot-iPhone14-2022-12-22at14.24.18.png)
 
 
