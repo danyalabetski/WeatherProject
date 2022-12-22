@@ -80,5 +80,3 @@ Website with the Weather API
 ![](https://user-images.githubusercontent.com/99253701/209125534-ca61d31b-7b50-49ac-a26b-9fcea6e97c8a.png)
 
 ![](https://user-images.githubusercontent.com/99253701/209125411-1aa37d5b-2696-49ab-82b0-49dff5127003.png)
-
-
