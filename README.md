@@ -5,12 +5,25 @@ The weather app. It has three screens. The main screen shows the weather of your
 
 ## Technologies
 
- - UIKit
- - Foundation
- - MVP
- - SnapKit
- - CoreLocation
- - MapKit
+```sh
+- UIKit
+```
+```sh
+Foundation
+```
+```sh
+MVP
+```
+```sh
+SnapKit
+```
+```sh
+CoreLocation
+```
+```sh
+MapKit
+```
+ 
 
 
 ## API Reference
@@ -18,8 +31,8 @@ The weather app. It has three screens. The main screen shows the weather of your
 #### Weather 5 day / 3 hour forecast data
 
 
-```http
-  GET: https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&cnt={api_key}&units=metric
+```https
+  GET: ://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&cnt={api_key}&units=metric
 ```
 
 | Parameter | Type     | Description                |
@@ -31,8 +44,8 @@ The weather app. It has three screens. The main screen shows the weather of your
 
 #### City weather
 
-```http
-  GET: https://api.openweathermap.org/data/2.5/forecast?q={city}&limit=5&appid=api_key&units=metric
+```https
+  GET: ://api.openweathermap.org/data/2.5/forecast?q={city}&limit=5&appid=api_key&units=metric
 ```
 
 | Parameter | Type     | Description                       |
