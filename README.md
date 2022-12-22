@@ -24,6 +24,14 @@ CoreLocation
 MapKit
 ```
 
+## MVP Architecture
+```mermaid
+graph LR
+A(Model) --> B(Presenter)
+B --> C(View)
+C --> B
+```
+
 ## API Reference
 
 #### Weather 5 day / 3 hour forecast data
@@ -67,6 +75,6 @@ Website with the Weather API
 
 ## Screenshots
 
-![App Screenshot](SimulatorScreenShot-iPhone14-2022-12-22at14.09.55)
+![App Screenshot](/Users/danek/Desktop/SimulatorScreenShot-iPhone14-2022-12-22at14.09.55.png)
 
 
