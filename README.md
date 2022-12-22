@@ -6,7 +6,7 @@ The weather app. It has three screens. The main screen shows the weather of your
 ## Technologies
 
 ```sh
-- UIKit
+UIKit
 ```
 ```sh
 Foundation
@@ -23,8 +23,6 @@ CoreLocation
 ```sh
 MapKit
 ```
- 
-
 
 ## API Reference
 
@@ -32,7 +30,7 @@ MapKit
 
 
 ```https
-  GET: ://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&cnt={api_key}&units=metric
+  GET: https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&cnt={api_key}&units=metric
 ```
 
 | Parameter | Type     | Description                |
@@ -45,7 +43,7 @@ MapKit
 #### City weather
 
 ```https
-  GET: ://api.openweathermap.org/data/2.5/forecast?q={city}&limit=5&appid=api_key&units=metric
+  GET: https://api.openweathermap.org/data/2.5/forecast?q={city}&limit=5&appid=api_key&units=metric
 ```
 
 | Parameter | Type     | Description                       |
@@ -55,16 +53,11 @@ MapKit
 |`units=metric`|
 
 
-
-
 ## Appendix
 
 Website with the Weather API
 
 - [https://openweathermap.org]()
-
-
-
 
 
 ## Author
