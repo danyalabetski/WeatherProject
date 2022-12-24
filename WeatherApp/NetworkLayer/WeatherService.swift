@@ -25,7 +25,7 @@ final class WeatherService: NSObject {
     }
 
     private func makeDataRequest(forCoordinates coordinates: CLLocationCoordinate2D) {
-        guard let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&cnt=5&appid=c88dea33fd6e93919619685eb9fdc45c&units=metric"
+        guard let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&cnt=7&appid=c88dea33fd6e93919619685eb9fdc45c&units=metric"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
 
         guard let url = URL(string: urlString) else { return }

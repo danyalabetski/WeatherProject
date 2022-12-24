@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -333,7 +333,7 @@
 				};
 			};
 			buildConfigurationList = 950A9F4A293F31BA00EBB097 /* Build configuration list for PBXProject "WeatherApp" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

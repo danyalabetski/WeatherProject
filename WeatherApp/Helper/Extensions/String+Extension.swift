@@ -1,9 +1,17 @@
 import Foundation
 
 extension String {
-    func toJustTime() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH"
-        return dateFormatter.string(from: Date())
+    func hhDate() -> String? {
+        let formatter = DateFormatter()
+
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        guard let date = formatter.date(from: self) else { return nil }
+
+        formatter.dateFormat = "HH"
+
+        let str = formatter.string(from: date)
+
+        return str
     }
 }

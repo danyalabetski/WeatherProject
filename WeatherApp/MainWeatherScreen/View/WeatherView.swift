@@ -141,14 +141,14 @@ final class WeatherView: UIViewController {
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
             make.left.equalTo(backroundView.snp.left).inset(105)
         }
-        
+
         seperatorView.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
             make.left.equalTo(cityLabel.snp.right).inset(-15)
             make.width.equalTo(1)
             make.height.equalTo(20)
         }
-        
+
         countyLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherConditionLabel.snp.bottom).inset(-10)
             make.left.equalTo(cityLabel.snp.right).inset(-30)
@@ -207,7 +207,7 @@ extension WeatherView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         let weather = presenter?.weatherData?.list[0]
         let icons = weather?.weather[0]
 
-        cell.timeLabel.text = data?.dtTxt.toJustTime()
+        cell.timeLabel.text = data?.dtTxt.hhDate()
         cell.temperatureImageView.image = UIImage(named: icons?.icon ?? "")
         cell.temperatureLabel.text = "\(Int(data?.main.temp ?? 0))°"
 

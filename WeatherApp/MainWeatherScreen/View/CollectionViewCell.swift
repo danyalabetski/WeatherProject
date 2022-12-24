@@ -33,7 +33,10 @@ final class CollectionViewCell: UICollectionViewCell {
         temperatureImageView.contentMode = .scaleAspectFill
 
         timeLabel.customLabel(nameFont: "Poppins-Regular", sizeFont: 15)
+        timeLabel.font = UIFont.boldSystemFont(ofSize: 17)
+
         temperatureLabel.customLabel(nameFont: "Poppins-Regular", sizeFont: 15)
+        temperatureLabel.font = UIFont.boldSystemFont(ofSize: 20)
     }
 
     private func setupConstraints() {

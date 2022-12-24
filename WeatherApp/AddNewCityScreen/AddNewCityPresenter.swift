@@ -28,7 +28,7 @@ extension AddNewCityPresenter: AddNewCityPresenterProtocol {
             DispatchQueue.main.async {
                 switch data {
                 case .failure(let error):
-                    self.view.showError(message: "The place was not founded")
+                    self.view.showError(message: "The place was not found")
                     print(error.localizedDescription)
                 case .success(let weather):
                     self.weatherModel = weather
