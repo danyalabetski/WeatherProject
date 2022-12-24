@@ -75,7 +75,7 @@ Website with the Weather API
 
 ## Screenshots
 
-![](https://user-images.githubusercontent.com/99253701/209125305-e57dae8d-ce96-4f37-bd76-424ab4e3ce0f.png)
+![](https://user-images.githubusercontent.com/99253701/209442694-127c549e-c044-4faf-a9c0-973b9013115e.png)
 
 ![](https://user-images.githubusercontent.com/99253701/209125534-ca61d31b-7b50-49ac-a26b-9fcea6e97c8a.png)
 
